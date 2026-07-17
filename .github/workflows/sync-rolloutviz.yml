@@ -1,0 +1,49 @@
+name: sync rolloutviz
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-rolloutviz
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
+      - name: Fetch the latest released formula
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --show-error --silent --location \
+            --retry 5 --retry-all-errors \
+            https://github.com/unlatch-ai/rolloutviz/releases/latest/download/rolloutviz.rb \
+            --output /tmp/rolloutviz.rb
+          ruby -c /tmp/rolloutviz.rb
+          grep -Fq 'homepage "https://github.com/unlatch-ai/rolloutviz"' /tmp/rolloutviz.rb
+          grep -Fq 'https://github.com/unlatch-ai/rolloutviz/releases/download/' /tmp/rolloutviz.rb
+          mkdir -p Formula
+          if ! cmp -s /tmp/rolloutviz.rb Formula/rolloutviz.rb; then
+            mv /tmp/rolloutviz.rb Formula/rolloutviz.rb
+          fi
+      - name: Commit an updated formula
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- Formula/rolloutviz.rb; then
+            echo "RolloutViz formula is current"
+            exit 0
+          fi
+          version=$(ruby -ne 'puts $1 if $_ =~ /^  version "([^"]+)"/' Formula/rolloutviz.rb)
+          test -n "${version}"
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add Formula/rolloutviz.rb
+          git commit -m "rolloutviz ${version}"
+          git push origin HEAD:main
