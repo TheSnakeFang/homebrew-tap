@@ -1,10 +1,10 @@
 # unlatch-ai Homebrew tap
 
-Install RolloutViz:
+Install RLViz:
 
 ```bash
-brew install unlatch-ai/tap/rolloutviz
+brew install unlatch-ai/tap/rlviz
 ```
 
 Formulae in this tap are generated from signed releases in their source repositories.
-The RolloutViz formula syncs automatically from the latest public release.
+The RLViz formula syncs automatically from the latest public release.

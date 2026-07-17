@@ -1,4 +1,4 @@
-name: sync rolloutviz
+name: sync rlviz
 
 on:
   workflow_dispatch:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: sync-rolloutviz
+  group: sync-rlviz
   cancel-in-progress: false
 
 jobs:
@@ -23,27 +23,27 @@ jobs:
           set -euo pipefail
           curl --fail --show-error --silent --location \
             --retry 5 --retry-all-errors \
-            https://github.com/unlatch-ai/rolloutviz/releases/latest/download/rolloutviz.rb \
-            --output /tmp/rolloutviz.rb
-          ruby -c /tmp/rolloutviz.rb
-          grep -Fq 'homepage "https://github.com/unlatch-ai/rolloutviz"' /tmp/rolloutviz.rb
-          grep -Fq 'https://github.com/unlatch-ai/rolloutviz/releases/download/' /tmp/rolloutviz.rb
+            https://github.com/unlatch-ai/rlviz/releases/latest/download/rlviz.rb \
+            --output /tmp/rlviz.rb
+          ruby -c /tmp/rlviz.rb
+          grep -Fq 'homepage "https://github.com/unlatch-ai/rlviz"' /tmp/rlviz.rb
+          grep -Fq 'https://github.com/unlatch-ai/rlviz/releases/download/' /tmp/rlviz.rb
           mkdir -p Formula
-          if ! cmp -s /tmp/rolloutviz.rb Formula/rolloutviz.rb; then
-            mv /tmp/rolloutviz.rb Formula/rolloutviz.rb
+          if ! cmp -s /tmp/rlviz.rb Formula/rlviz.rb; then
+            mv /tmp/rlviz.rb Formula/rlviz.rb
           fi
       - name: Commit an updated formula
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- Formula/rolloutviz.rb; then
-            echo "RolloutViz formula is current"
+          if [ -z "$(git status --porcelain -- Formula/rlviz.rb)" ]; then
+            echo "RLViz formula is current"
             exit 0
           fi
-          version=$(ruby -ne 'puts $1 if $_ =~ /^  version "([^"]+)"/' Formula/rolloutviz.rb)
+          version=$(ruby -ne 'puts $1 if $_ =~ /^  version "([^"]+)"/' Formula/rlviz.rb)
           test -n "${version}"
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add Formula/rolloutviz.rb
-          git commit -m "rolloutviz ${version}"
+          git add Formula/rlviz.rb
+          git commit -m "rlviz ${version}"
           git push origin HEAD:main
