@@ -23,11 +23,11 @@ jobs:
           set -euo pipefail
           curl --fail --show-error --silent --location \
             --retry 5 --retry-all-errors \
-            https://github.com/unlatch-ai/rlviz/releases/latest/download/rlviz.rb \
+            https://github.com/TheSnakeFang/rlviz/releases/latest/download/rlviz.rb \
             --output /tmp/rlviz.rb
           ruby -c /tmp/rlviz.rb
-          grep -Fq 'homepage "https://github.com/unlatch-ai/rlviz"' /tmp/rlviz.rb
-          grep -Fq 'https://github.com/unlatch-ai/rlviz/releases/download/' /tmp/rlviz.rb
+          grep -Fq 'homepage "https://github.com/TheSnakeFang/rlviz"' /tmp/rlviz.rb
+          grep -Fq 'https://github.com/TheSnakeFang/rlviz/releases/download/' /tmp/rlviz.rb
           mkdir -p Formula
           if ! cmp -s /tmp/rlviz.rb Formula/rlviz.rb; then
             mv /tmp/rlviz.rb Formula/rlviz.rb

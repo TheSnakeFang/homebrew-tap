@@ -1,9 +1,9 @@
-# unlatch-ai Homebrew tap
+# TheSnakeFang Homebrew tap
 
 Install RLViz:
 
 ```bash
-brew install unlatch-ai/tap/rlviz
+brew install TheSnakeFang/tap/rlviz
 ```
 
 Formulae in this tap are generated from signed releases in their source repositories.

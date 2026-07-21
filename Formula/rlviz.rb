@@ -4,27 +4,27 @@
 # RLViz native CLI release.
 class Rlviz < Formula
   desc "Visualize and compare agent rollouts"
-  homepage "https://github.com/unlatch-ai/rlviz"
-  version "0.1.0"
+  homepage "https://github.com/TheSnakeFang/rlviz"
+  version "0.2.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/unlatch-ai/rlviz/releases/download/v0.1.0/rlviz_0.1.0_darwin_arm64.tar.gz"
-      sha256 "345b561ab3e4b66ee020b0ef613dc49c3d01b8dde790f739816e3278e0f3aa0a"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.2.0/rlviz_0.2.0_darwin_arm64.tar.gz"
+      sha256 "1d9d419524bcf5e78e32b731d0ee2f939947273d0e5216872a92f42f989c918f"
     else
-      url "https://github.com/unlatch-ai/rlviz/releases/download/v0.1.0/rlviz_0.1.0_darwin_x86_64.tar.gz"
-      sha256 "9affd2a9667eea7bcd132fec0d237bce8f736564923fb32dcba10a5a2ce51d5e"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.2.0/rlviz_0.2.0_darwin_x86_64.tar.gz"
+      sha256 "fc09588bc2ff0b83fd445f6ca909d490f199e8c06a7c373c52102cf211c67afc"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/unlatch-ai/rlviz/releases/download/v0.1.0/rlviz_0.1.0_linux_arm64.tar.gz"
-      sha256 "839f4ca224bf0e161bc4471baa1be08416523957cd719c9e4c4ce323a5fff234"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.2.0/rlviz_0.2.0_linux_arm64.tar.gz"
+      sha256 "2ebf85ddf958469cace7611ca4566671a1ad842ff5027a39dcc6d2b61a04d7cc"
     else
-      url "https://github.com/unlatch-ai/rlviz/releases/download/v0.1.0/rlviz_0.1.0_linux_x86_64.tar.gz"
-      sha256 "3f6cc3ce021192eec22388236bef7bb4f20df795aab0de7024a7b66065c43ad0"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.2.0/rlviz_0.2.0_linux_x86_64.tar.gz"
+      sha256 "53b28693334df8f73d47873099cfc90623d6336ff95633b02d8c1799ec0bca66"
     end
   end
 
