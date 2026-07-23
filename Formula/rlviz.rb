@@ -5,26 +5,26 @@
 class Rlviz < Formula
   desc "Inspect agent rollouts locally"
   homepage "https://github.com/TheSnakeFang/rlviz"
-  version "0.3.1"
+  version "0.3.2"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.1/rlviz_0.3.1_darwin_arm64.tar.gz"
-      sha256 "30c4d9f0bc9fa9784931f76d14c22a89e8b6392c5f0d569380ee895eacb1137c"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.2/rlviz_0.3.2_darwin_arm64.tar.gz"
+      sha256 "b00b0398ba2dbaebfe4e294ce94edb5885c0e46c8c67451f228fb92da4a1d53f"
     else
-      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.1/rlviz_0.3.1_darwin_x86_64.tar.gz"
-      sha256 "8db725985a8db866937aaef536cdc8ece93fa48d902cd1b23c029b1447fa7e88"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.2/rlviz_0.3.2_darwin_x86_64.tar.gz"
+      sha256 "9d081737c0ab18350285e5d59ba0cba62496a5a14fe936df95ad30fa53aba8a8"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.1/rlviz_0.3.1_linux_arm64.tar.gz"
-      sha256 "81b5fbd89b183b08734111e1bc31ec2e22364107df2c9633c7f6a2766fb697d2"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.2/rlviz_0.3.2_linux_arm64.tar.gz"
+      sha256 "7a89d2f1f061040347780d4526f3430ac1843b22ba306c3fe8c45c647a7b8d4a"
     else
-      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.1/rlviz_0.3.1_linux_x86_64.tar.gz"
-      sha256 "1fa19a70bb4ccca5adb284696ee9e2a0b13e2056db7fdd8c6fb41389b2ec3fda"
+      url "https://github.com/TheSnakeFang/rlviz/releases/download/v0.3.2/rlviz_0.3.2_linux_x86_64.tar.gz"
+      sha256 "483cf43031843b1d396e7b87b0d5a1dce3814970a70205b62a7fec409044bb46"
     end
   end
 
